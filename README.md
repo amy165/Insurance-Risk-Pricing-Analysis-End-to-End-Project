@@ -128,7 +128,7 @@ Risk defined as:
 
 ## 📉 Visual Insight
 
-![Risk vs Premium](./image.png)
+![Risk vs Premium](https://raw.githubusercontent.com/amy165/images/main/CarInsurance/risk_premium.png)
 
 👉 Clear mismatch between expected risk and pricing across vehicle types.
 
