@@ -1,3 +1,5 @@
+## ONGOING process. some things needs to be fixed
+
 # 🚗 Insurance Risk & Pricing Analysis – End-to-End Project
 
 ## Overview
