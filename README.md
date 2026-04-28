@@ -152,20 +152,6 @@ Although including redflag variables improved performance, they were excluded to
 
 ---
 
-## 📁 Repository Structure
-
-├── data/
-├── notebooks/
-│ ├── 01_performance_dataset.ipynb
-│ ├── 02_modeling_dataset.ipynb
-├── images/
-├── outputs/
-│ ├── feature_importance.csv
-│ ├── model_results.csv
-├── README.md
-
----
-
 ## ⚠️ Limitations
 
 - Lack of clear data dictionary for some variables  
