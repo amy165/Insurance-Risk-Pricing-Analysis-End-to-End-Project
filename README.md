@@ -18,6 +18,7 @@ The analysis is structured into three main parts:
 ## 📊 Dataset
 
 Source: Kaggle – Vehicle Insurance Dataset  
+🔗 [Kaggle link](https://www.kaggle.com/datasets/imtkaggleteam/vehicle-insurance-data)
 
 The dataset contains policy-level information, including:
 
@@ -52,7 +53,7 @@ The data cleaning process was structured into **three datasets**, each aligned w
 
 ### 2. Modeling Dataset
 - Records with `policy_duration = 0` removed
-- Invalid `vehicle_age` removed (< -3)  
+- Invalid `vehicle_age` removed (< -3). Values of -1 and -2 imputed to 0  
 - Missing `PROD_YEAR` removed  
 - Null numerical features imputed using hierarchical grouping  
 - Feature engineering:
@@ -83,8 +84,7 @@ Three dashboards were developed:
 - Exposure calculated based on policy duration  
 - Metrics annualized for fair comparison  
 - Expected Loss vs Premium (per year)  
-- Claim frequency vs severity  
-- Segmentation by vehicle type and insured value  
+- Claim frequency vs severity (Segmentation by vehicle type and insured value)  
 
 📌 Key insights:
 - Systematic underpricing in early years  
