@@ -1,239 +1,202 @@
-## ONGOING process. some things needs to be fixed
 
 # 🚗 Insurance Risk & Pricing Analysis – End-to-End Project
 
-## Overview
+## 📌 Project Overview
 
-This project started with a critical business question:
+This project analyzes a vehicle insurance portfolio to evaluate **business performance, pricing adequacy, and claim risk prediction**.
 
-*Is this insurance portfolio actually profitable, or is it silently losing money?*
+The goal was to connect **data analysis, business insights, and machine learning** in a real-world insurance context.
 
-Using a real-world motor insurance dataset, I built an end-to-end data science workflow to analyze **risk, pricing adequacy, and data quality issues**.
+The analysis is structured into three main parts:
 
-The goal was not just to build predictive models, but to simulate a realistic insurance scenario where:
-
-- Data is imperfect  
-- Pricing decisions may be inconsistent  
-- Risk is not properly aligned with premiums  
-
-The project combines **exploratory analysis, actuarial-style risk decomposition, and machine learning modeling**.
+- Portfolio performance analysis  
+- Pricing and risk evaluation  
+- Claim prediction modeling  
 
 ---
 
-## 📂 Dataset
+## 📊 Dataset
 
-Motor insurance portfolio dataset (2011–2018)
+Source: Kaggle – Vehicle Insurance Dataset  
 
-Includes:
+The dataset contains policy-level information, including:
 
-- Policy details (duration, type, usage)
-- Vehicle characteristics (type, capacity, engine size)
-- Financial variables (premium, insured value)
-- Claims data (occurrence and severity)
+- Premiums and claims  
+- Vehicle characteristics (type, usage, engine, etc.)  
+- Policy periods (start/end dates)  
+- Insured value   
 
----
+### ⚠️ Data Challenges
 
-## 🚀 What I Did
+One of the main challenges of this project was understanding the meaning and consistency of certain fields:
 
-- Cleaned and validated a large insurance dataset with real-world inconsistencies  
-- Engineered key variables:
-  - Policy duration  
-  - Vehicle age  
-  - Risk segmentation  
-  - Data quality flags (red flags)  
-- Built a full **risk decomposition framework**:
-  - Frequency  
-  - Severity  
-  - Expected loss (risk)  
-- Compared premiums vs expected loss (pricing gap)  
-- Developed ML models:
-  - Logistic Regression  
-  - Random Forest  
-  - XGBoost  
-- Handled class imbalance and tuned thresholds  
-- Interpreted model outputs for business insights  
+- `OBJECT_ID`: likely represents a grouped vehicle or policy identifier, not a unique policy  
+- `EFFECTIVE_YR`: inconsistent and not clearly aligned with policy or vehicle timelines  
+
+These ambiguities limited some cleaning decisions and highlight the importance of **domain knowledge in insurance datasets**.
 
 ---
 
-## 🧠 Business Questions
+## 🧹 Data Preparation
 
-- Is the portfolio profitable?  
-- Which segments generate the highest losses?  
-- Are premiums aligned with expected risk?  
-- Can we predict claim occurrence?  
-- Are data quality issues impacting pricing decisions?  
+The data cleaning process was structured into **three datasets**, each aligned with a specific goal:
 
----
+### 1. Performance Dataset
+- No records removed  
+- Missing `CLAIM_PAID` and `PREMIUM` filled with 0  
+- Used for business-level portfolio analysis
+- Feature engineering:
+  - `has_claim`
+  - `policy_duration`
+  
 
-## 📈 Portfolio Performance
-
-- **Total Premium:** 5.94B  
-- **Total Claims:** 15.41B  
-- **Loss Ratio:** **2.6** 🚨  
-
-👉 The portfolio is heavily unprofitable.
-
----
-
-## ⚠️ Special Case – Zero Insured Value Policies
-
-- Total claims paid: **8,250**
-- Claim frequency: **~4.08%**
-- Only a very small number of policies generated claims
-
-👉 While most of these policies do not generate losses, their presence indicates **data quality issues**, as policies without insured value should not normally produce claims.
+### 2. Modeling Dataset
+- Records with `policy_duration = 0` removed
+- Invalid `vehicle_age` removed (< -3)  
+- Missing `PROD_YEAR` removed  
+- Null numerical features imputed using hierarchical grouping  
+- Feature engineering:
+  - `vehicle_age`
+  - Grouping of insured value into risk-based segments
+  - Creation of categorical buckets for vehicle age and policy duration
 
 ---
 
-## 📊 Risk Decomposition (Key Insight)
+## 📈 Dashboard Analysis (Power BI)
 
-Risk defined as:
+Three dashboards were developed:
 
-> **Risk = Frequency × Severity**
+### 1. Portfolio Performance Overview
+- Premium vs Claims over time  
+- Loss Ratio evolution  
+- Exposure growth  
 
-### 🔥 Highest Risk Segments
-
-| Vehicle Type | Risk | Avg Premium | Gap |
-|-------------|------|------------|------|
-| Truck | 46,581 | 14,247 | **-32,334** |
-| Tanker | 39,737 | 16,906 | **-22,830** |
-| Trailers | 29,791 | 6,522 | **-23,269** |
-| Bus | 26,143 | 10,666 | **-15,476** |
-
-👉 **Severe underpricing in heavy/commercial vehicles**
+📌 Key insights:
+- Performance improves from 2015 onwards  
+- Loss ratio remains above 100%  
+- Premium growth is lower than exposure growth → **underpricing signal**
 
 ---
 
-### 🟢 Low Risk Segments
+### 2. Risk & Pricing Analysis
 
-| Vehicle Type | Risk | Avg Premium | Gap |
-|-------------|------|------------|------|
-| Motor-cycle | 185 | 588 | +403 |
-| Tractor | 2,324 | 7,459 | +5,135 |
+- Exposure calculated based on policy duration  
+- Metrics annualized for fair comparison  
+- Expected Loss vs Premium (per year)  
+- Claim frequency vs severity  
+- Segmentation by vehicle type and insured value  
 
-👉 These segments are **overpriced or profitable**
-
----
-
-## 📊 Risk by Insured Value
-
-| Segment | Risk | Premium | Gap |
-|--------|------|--------|------|
-| Low | 432 | 598 | +166 |
-| Medium | 10,832 | 4,180 | **-6,651** |
-| High | 21,095 | 8,006 | **-13,089** |
-| Very High | 45,347 | 17,222 | **-28,124** |
-
-👉 **Risk increases sharply with insured value, but pricing does not keep up**
+📌 Key insights:
+- Systematic underpricing in early years  
+- Improvement by 2017 (underpriced segments reduced)  
+- Loss ratio improvement driven by lower claims paid, not frequency
+- This reduction in claims paid, while frequency remains relatively stable, may indicate improvements in claims validation processes or fraud detection.  
 
 ---
 
-## 📉 Visual Insight
+### 3. Claims Prediction (Machine Learning)
+- Model comparison  
+- Precision vs Recall trade-off  
+- Feature importance analysis  
+- Confusion matrix  
 
-![Risk vs Premium](https://raw.githubusercontent.com/amy165/images/main/CarInsurance/risk_premium.png)
-
-👉 Clear mismatch between expected risk and pricing across vehicle types.
-
----
-
-## 🤖 Modeling Approach
-
-### Target
-- `has_claim` → binary classification
-
----
-
-### Model Comparison
-
-| Model | ROC-AUC | Recall (Claims) | Notes |
-|------|--------|----------------|------|
-| Logistic | ~0.76 | Low | Baseline |
-| Logistic (Balanced) | ~0.76 | High | Improved recall |
-| Random Forest | ~0.78 | High | Tuned (max_depth=10) |
-| XGBoost | **~0.79–0.80** | High | Best overall |
+📌 Key metrics (XGBoost):
+- ROC-AUC: ~0.76  
+- PR-AUC: ~0.19 (vs baseline ~0.075)  
+- Recall: ~78%  
+- Precision: ~14%  
 
 ---
 
-### 🔥 Best Model: XGBoost
+## 🤖 Machine Learning
 
-- Strongest risk ranking (highest ROC-AUC)  
-- High recall (~0.84–0.91 depending on threshold)  
-- Suitable for **risk prioritization**
+Models tested:
 
----
+- Logistic Regression  
+- Logistic Regression (balanced)  
+- Random Forest  
+- Tuned Random Forest  
+- XGBoost  
 
-## 🔍 Feature Importance (XGBoost)
+### ⚖️ Model Selection
 
-Top drivers:
+The final model selected was:
 
-- `insured_redflag` 🔥  
-- Vehicle type  
-- Carrying capacity  
-- Seats number  
-- Policy duration  
-- Usage type  
+👉 **XGBoost without data-quality flag variables**
 
-👉 Data quality (missing insured value) is a **major risk indicator**
+Although including redflag variables improved performance, they were excluded to ensure:
 
----
-
-## ⚠️ Data Challenges
-
-| Issue | Solution |
-|------|----------|
-| Missing/zero insured values | Flagged + group imputation |
-| Inconsistent numeric variables | Median by group |
-| Outliers | Retained (valid risk signal) |
-| Class imbalance | Weighted models + threshold tuning |
-| Premium inconsistencies | Excluded from modeling |
+- Better interpretability  
+- Reduced dependence on data quality artifacts  
 
 ---
 
-## 📊 Key Insights
+## 🧠 Key Insights
 
-- Portfolio is **structurally unprofitable**  
-- Heavy vehicles drive most losses  
-- Pricing is **not aligned with risk**  
-- Risk increases with insured value  
-- Data quality issues impact modeling  
-- Models are better at **ranking risk than precise prediction**
+- Premiums do not scale proportionally with risk exposure  
+- Underpricing is concentrated in specific vehicle segments  
+- Portfolio improvement is driven by reduced claims severity, not frequency  
+- Data quality issues (missing values, inconsistencies) strongly impact modeling results  
 
 ---
 
-## 🚀 Business Impact
-
-This analysis can support:
-
-- Pricing optimization  
-- Risk segmentation  
-- Underwriting decisions  
-- Data quality improvements  
-- Loss reduction strategies  
-
----
-
-## 🛠 Tools & Tech
+## 🛠️ Tools & Technologies
 
 - Python (Pandas, NumPy, Scikit-learn, XGBoost)  
-- Feature engineering  
-- Classification modeling  
-- Risk decomposition  
+- Power BI  
+- Google Colab  
+- GitHub  
+
+📌 Additional learning:
+- Integration of Python scripts within Power BI for data preparation and feature handling  
 
 ---
 
-## ⏱ Project Scope & Limitations
+## 📁 Repository Structure
 
-This project was developed within a short time frame (~3 days) to simulate a real-world exploratory analysis scenario.
-
-Given more time, further improvements could include:
-- Hyperparameter tuning (GridSearch / Bayesian optimization)
-- Advanced feature engineering
-- Separate severity modeling (expected loss)
-- Model calibration and probability tuning
+├── data/
+├── notebooks/
+│ ├── 01_performance_dataset.ipynb
+│ ├── 02_modeling_dataset.ipynb
+├── images/
+├── outputs/
+│ ├── feature_importance.csv
+│ ├── model_results.csv
+├── README.md
 
 ---
 
-## 📎 Notes
+## ⚠️ Limitations
 
-*AI tools were used for debugging and workflow support. All analytical decisions, modeling logic, and business interpretations are my own.*
+- Lack of clear data dictionary for some variables  
+- Potential inconsistencies in policy-level aggregation  
+- Exposure approximation based on available dates  
+
+---
+
+## 📌 Key Learnings
+
+- The importance of understanding business meaning behind data fields  
+- Trade-offs between model performance and interpretability  
+- Handling imbalanced datasets using appropriate metrics (PR-AUC, recall)  
+- Designing dashboards aligned with business decision-making  
+
+---
+
+## 📷 Dashboard Preview
+
+| Overview | Pricing | ML |
+|----------|------------|----------|
+| ![Overview](https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Overview.jpg) | ![Pricing](https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Pricing.jpg) | ![ML](https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/ML.jpg) |
+
+
+---
+
+## 🚀 Next Steps
+
+- Improve feature engineering with domain-driven variables  
+- Explore claim severity modeling  
+- Validate results with real insurance benchmarks  
+
+
 
