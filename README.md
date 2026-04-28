@@ -148,7 +148,7 @@ Although including redflag variables improved performance, they were excluded to
 - GitHub  
 
 📌 Additional learning:
-- Integration of Python scripts within Power BI for data preparation and feature handling  
+- Integration of Python scripts within Power BI  
 
 ---
 
