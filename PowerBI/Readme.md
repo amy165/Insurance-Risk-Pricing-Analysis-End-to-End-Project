@@ -18,16 +18,12 @@ Descriptive portfolio monitoring dashboard including:
 - Severity
 - Frequency
 
----
-
 ## D2 — Risk & Pricing Analysis
 Pricing adequacy and portfolio segmentation dashboard including:
 - Expected Loss analysis
 - Pricing gap diagnostics
 - Frequency vs Severity segmentation
 - Vehicle risk profiling
-
----
 
 ## D3 — Claim Risk Prediction & Model Evaluation
 Machine Learning monitoring dashboard including:
@@ -37,15 +33,11 @@ Machine Learning monitoring dashboard including:
 - Feature importance
 - Confusion Matrix
 
----
-
 ## D4 — Inflation-Adjusted Portfolio Analysis
 Inflation-normalized portfolio diagnostics including:
 - Inflation-adjusted claims and premiums
 - Monetary values normalized to constant 2017 ETB
 - Adjusted pricing gap analysis
-
----
 
 ## D5 — Historical Risk-Based Pricing Simulation
 Interactive repricing simulation dashboard including:
@@ -53,6 +45,8 @@ Interactive repricing simulation dashboard including:
 - Multi-year historical repricing
 - Promotional policy scenarios
 - Simulated underwriting performance
+
+---
 
 # Data Model
 
@@ -67,6 +61,8 @@ Key modeling decisions:
 - Inflation normalization relative to 2017 ETB
 - Separate simulation tables generated from Python-based repricing workflows
 - Disconnected slicer tables and dynamic DAX measures were used for scenario selection.
+
+---
 
 # DAX & Analytical Logic
 
@@ -85,6 +81,8 @@ Important analytical concepts:
 - Historical repricing methodologies
 - Promotional policy preservation scenarios
 
+---
+
 # Pricing Simulation Workflow
 
 Historical repricing simulations were developed in Python and integrated into Power BI for scenario analysis and visualization.
@@ -99,6 +97,31 @@ Power BI was then used for:
 - KPI tracking
 - Vehicle-level performance analysis
 - Interactive visualization
+
+---
+
+# Simulation Assumptions & Limitations
+
+The pricing simulations focused exclusively on claim-cost adequacy.
+
+The simulated repricing strategies:
+- considered historical claim experience,
+- exposure normalization,
+- inflation-adjusted losses,
+- and optional preservation of promotional policies (`premium = 0`),
+
+but did not incorporate:
+- operational expenses,
+- commissions,
+- reinsurance costs,
+- taxes,
+- or target profit margins.
+
+Additionally, repricing was performed using estimated expected losses directly, without applying additional safety or profitability loadings.
+
+Therefore, the simulations should be interpreted as simplified underwriting adequacy scenarios rather than complete actuarial pricing models.
+
+---
 
 # Visual Design Decisions
 
