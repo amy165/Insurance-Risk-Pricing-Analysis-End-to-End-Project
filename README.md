@@ -49,6 +49,8 @@ This project aimed to investigate:
 
 - Multi-year historical repricing produced more stable pricing adjustments than single-year reactive repricing approaches.
 
+---
+
 # Project Evolution and Dashboard Gallery
 
 ## D1 — Portfolio Performance Overview
@@ -59,8 +61,6 @@ Initial descriptive analysis of premiums, claims, exposure, severity, and loss r
   <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Overview.jpg" width="750">
 </p>
 
----
-
 ## D2 — Risk & Pricing Analysis
 
 Identification of pricing gaps, expected losses, and risk segmentation by vehicle categories.
@@ -68,8 +68,6 @@ Identification of pricing gaps, expected losses, and risk segmentation by vehicl
 <p align="center">
   <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Pricing.jpg" width="750">
 </p>
-
----
 
 ## D3 — Claim Risk Prediction & Model Evaluation
 
@@ -79,8 +77,6 @@ Development and evaluation of claim probability classification models.
   <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/ML.jpg" width="750">
 </p>
 
----
-
 ## D4 — Inflation-Adjusted Portfolio Analysis
 
 Re-evaluation of portfolio performance using inflation-adjusted monetary values expressed in constant 2017 ETB.
@@ -88,8 +84,6 @@ Re-evaluation of portfolio performance using inflation-adjusted monetary values 
 <p align="center">
   <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Inflation.jpg" width="850">
 </p>
-
----
 
 ## D5 — Pricing Strategy Simulation Overview
 
