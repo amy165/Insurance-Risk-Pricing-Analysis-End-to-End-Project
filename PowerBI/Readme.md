@@ -121,6 +121,15 @@ Additionally, repricing was performed using estimated expected losses directly, 
 
 Therefore, the simulations should be interpreted as simplified underwriting adequacy scenarios rather than complete actuarial pricing models.
 
+The simulations assumed stable exposure and policy volumes after repricing.
+
+Potential behavioral effects such as:
+- customer attrition,
+- portfolio mix changes,
+- or exposure reductions resulting from premium increases
+
+were not modeled.
+
 ---
 
 # Visual Design Decisions
