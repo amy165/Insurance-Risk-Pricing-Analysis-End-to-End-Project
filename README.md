@@ -3,7 +3,7 @@
 
 An end-to-end insurance analytics project exploring portfolio performance, pricing adequacy, claim prediction, inflation-adjusted diagnostics, and historical risk-based repricing simulations using Power BI, Python, and Machine Learning.
 
-## Project Overview
+# Project Overview
 
 This project started as a descriptive insurance portfolio analysis and gradually evolved into a multi-stage analytical case study involving:
 
@@ -16,7 +16,8 @@ This project started as a descriptive insurance portfolio analysis and gradually
 The project follows an iterative analytical workflow where each stage generated new business questions and deeper investigations.
 
 ---
-## Business Problem
+
+# Business Problem
 
 The insurance portfolio showed persistent underwriting losses across several years.
 
@@ -30,91 +31,140 @@ This project aimed to investigate:
 
 ---
 
-## Project Evolution
+# Key Business Findings
 
-### D1 — Portfolio Performance Overview
+- The insurance portfolio consistently operated at extremely high loss ratios, exceeding 250% in some periods.
+
+- Several vehicle categories, particularly Bus, Truck, Pick-Up, and Trailers, showed significant underpricing relative to observed risk costs.
+
+- Inflation-adjusted analyses provided a more consistent view of historical portfolio performance using constant-value monetary comparisons.
+
+- Premium growth did not keep pace with inflation-adjusted claim costs over time.
+
+- Machine Learning models identified vehicle type, exposure-related variables, and insured value groups as major drivers of claim probability.
+
+- Historical risk-based repricing simulations substantially improved underwriting sustainability.
+
+- Simulated loss ratios decreased from approximately 269% to below 90% under some historical repricing strategies.
+
+- Multi-year historical repricing produced more stable pricing adjustments than single-year reactive repricing approaches.
+
+# Project Evolution and Dashboard Gallery
+
+## D1 — Portfolio Performance Overview
+
 Initial descriptive analysis of premiums, claims, exposure, severity, and loss ratios.
 
-### D2 — Risk & Pricing Analysis
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Overview.jpg" width="750">
+</p>
+
+---
+
+## D2 — Risk & Pricing Analysis
+
 Identification of pricing gaps, expected losses, and risk segmentation by vehicle categories.
 
-### D3 — Claim Risk Prediction (Machine Learning)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Pricing.jpg" width="750">
+</p>
+
+---
+
+## D3 — Claim Risk Prediction & Model Evaluation
+
 Development and evaluation of claim probability classification models.
 
-### D4 — Inflation-Adjusted Portfolio Analysis
+ <p align="center">
+  <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/ML.jpg" width="750">
+</p>
+
+---
+
+## D4 — Inflation-Adjusted Portfolio Analysis
+
 Re-evaluation of portfolio performance using inflation-adjusted monetary values expressed in constant 2017 ETB.
 
-### D5 — Historical Risk-Based Pricing Simulation
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Inflation.jpg" width="850">
+</p>
+
+---
+
+## D5 — Pricing Strategy Simulation Overview
+
 Simulation of alternative pricing strategies using historical risk experience and inflation-adjusted losses.
 
----
-
-## Dashboard Gallery
-
-# D1 — Portfolio Performance Overview
-
-![Overview](https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Overview.jpg)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Repricing.jpg" width="850">
+</p>
 
 ---
 
-# D2 — Risk & Pricing Analysis
+# Dataset
 
- ![Pricing](https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/Pricing.jpg)
+Source: Kaggle – Vehicle Insurance Dataset  
+🔗 [Kaggle link](https://www.kaggle.com/datasets/imtkaggleteam/vehicle-insurance-data)
 
----
+The dataset contains policy-level information, including:
 
-# D3 — Claim Risk Prediction & Model Evaluation
-
- ![ML](https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/ML.jpg)
-
----
-
-# D4 — Inflation-Adjusted Portfolio Analysis
-
- ![ML](https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/ML.jpg)
-
----
-
-# D5 — Pricing Strategy Simulation Overview
-
- ![ML](https://raw.githubusercontent.com/amy165/Insurance-Risk-Pricing-Analysis-End-to-End-Project/main/images/ML.jpg)
+- Policy information
+- Vehicle categories
+- Premium values
+- Claim payments
+- Policy duration
+- Insured values
+- Claim indicators
 
 ---
 
-## Methodology
+# Methodology
 
-# Data Preparation
+## Data Preparation
 - Data cleaning
 - Exposure normalization
 - Inflation adjustment
 - Feature engineering
 
-# Portfolio Analytics
+## Portfolio Analytics
 - Loss ratio analysis
 - Severity & frequency analysis
 - Pricing gap analysis
 
-# Machine Learning
+## Machine Learning
 - XGBoost
 - Random Forest
 - Logistic Regression
 - Threshold optimization
 
-# Pricing Simulations
+## Inflation Adjustment
+
+Historical monetary values were adjusted to constant 2017 ETB using annual inflation rates.
+Adjusted variables included:
+- Premiums
+- Claim payments
+- Insured values
+
+Inflation adjustment factors were calculated cumulatively relative to the 2017 base year.
+
+The inflation data was obtained from publicly available macroeconomic sources for Ethiopia in the WorldBank.
+[WorldBank link](https://datos.bancomundial.org/indicador/FP.CPI.TOTL.ZG?end=2024&locations=ET&start=2001)
+
+## Pricing Simulations
 - Previous-year repricing
 - Multi-year historical repricing
 - Promotional policy scenarios
 
 ---
 
-## Tools & Technologies
+# Tools & Technologies
 
-# Analytics & Visualization
+## Analytics & Visualization
 - Power BI
 - DAX
 - Python
 
-# Python Libraries
+## Python Libraries
 - Pandas
 - NumPy
 - Matplotlib
@@ -124,20 +174,20 @@ Simulation of alternative pricing strategies using historical risk experience an
 
 ---
 
-## Project Structure
+# Project Structure
 
-├── data/
-├── notebooks/
-├── powerbi/
 ├── images/
-├── dashboards/
+├── notebooks/
+│   └── README.md
+├── powerbi/
+│   └── README.md
 ├── README.md
 
 Additional technical explanations are included inside specific folders where appropriate.
 
 ---
 
-## Future Improvements
+# Future Improvements
 
 Potential future extensions include:
 
