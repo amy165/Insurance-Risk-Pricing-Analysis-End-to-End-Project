@@ -155,6 +155,14 @@ The inflation data was obtained from publicly available macroeconomic sources fo
 - Multi-year historical repricing
 - Promotional policy scenarios
 
+### Simulation Notes
+
+The repricing simulations focused on claim-cost adequacy and did not incorporate operational expenses, commissions, taxes, reinsurance costs, or profit margins.
+
+Simulated premiums were estimated directly from expected losses using historical risk experience and inflation-adjusted claim costs.
+
+Additional scenarios preserving promotional policies (`premium = 0`) were also evaluated.
+
 ---
 
 # Tools & Technologies
