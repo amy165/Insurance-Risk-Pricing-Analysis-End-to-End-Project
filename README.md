@@ -157,6 +157,8 @@ Simulated premiums were estimated directly from expected losses using historical
 
 Additional scenarios preserving promotional policies (`premium = 0`) were also evaluated.
 
+The simulations also assumed stable portfolio exposure and policy volumes after repricing. Potential behavioral effects such as customer attrition or exposure reduction due to premium increases were not modeled.
+
 ---
 
 # Tools & Technologies
