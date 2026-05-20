@@ -180,12 +180,14 @@ The simulations also assumed stable portfolio exposure and policy volumes after 
 
 # Project Structure
 
-├── images/
-├── notebooks/
-│   └── README.md
-├── powerbi/
-│   └── README.md
-├── README.md
+# Project Structure
+
+| Folder | Description |
+|---|---|
+| `/notebooks` | Python notebooks for EDA, modeling, inflation adjustment, and pricing simulations |
+| `/powerbi` | Power BI dashboards, data model documentation, and DAX logic |
+| `/images` | Dashboard screenshots used throughout the project documentation |
+| `/docs` | Data dictionary documentation |
 
 Additional technical explanations are included inside specific folders where appropriate.
 
